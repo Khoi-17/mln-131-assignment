@@ -8,6 +8,9 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const [showScrollTop, setShowScrollTop] = useState(false)
   const location = useLocation()
+  const hasCongressBg = ['/congress-vi', '/congress-vii', '/midterm-congress-vii'].includes(
+    location.pathname
+  )
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +30,19 @@ const Layout = ({ children }: LayoutProps) => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div
+      className={`min-h-screen ${hasCongressBg ? '' : 'bg-white'}`}
+      style={
+        hasCongressBg
+          ? {
+              backgroundImage: 'url(/download.jpg)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }
+          : undefined
+      }
+    >
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-md">
         <div className="max-w-7xl mx-auto px-4">
@@ -39,12 +54,11 @@ const Layout = ({ children }: LayoutProps) => {
             
             <div className="hidden md:flex items-center space-x-1">
               <NavLink to="/" label="Trang chủ" isActive={isActive('/')} />
-              <NavLink to="/background" label="Bối cảnh" isActive={isActive('/background')} />
               <NavLink to="/congress-vi" label="Đại hội VI" isActive={isActive('/congress-vi')} />
-              <NavLink to="/implementation-vi" label="Thực hiện ĐH VI" isActive={isActive('/implementation-vi')} />
               <NavLink to="/congress-vii" label="Đại hội VII" isActive={isActive('/congress-vii')} />
-              <NavLink to="/achievements" label="Thành tựu" isActive={isActive('/achievements')} />
+              <NavLink to="/midterm-congress-vii" label="Hội Nghị" isActive={isActive('/midterm-congress-vii')} />
               <NavLink to="/timeline" label="Timeline" isActive={isActive('/timeline')} />
+              <NavLink to="/tong-hop" label="Video" isActive={isActive('/tong-hop')} />
             </div>
 
             {/* Mobile menu button */}

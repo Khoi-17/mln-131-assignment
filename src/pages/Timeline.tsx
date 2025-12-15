@@ -1,151 +1,134 @@
 import { useEffect } from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import { motion } from 'framer-motion'
+import { timelineData } from '../data/timeline'
+import type { TimelineItem } from '../data/timeline'
+
+const TimelineNode = ({ isLeft }: { isLeft: boolean }) => (
+  <motion.div
+    className={`absolute top-12 md:top-1/2 md:-translate-y-1/2 ${
+      isLeft ? 'md:left-1/2 md:-translate-x-1/2 left-10' : 'md:left-1/2 md:-translate-x-1/2 left-10'
+    }`}
+    initial={{ scale: 0.4, opacity: 0 }}
+    whileInView={{ scale: 1, opacity: 1 }}
+    transition={{ type: 'spring', stiffness: 220, damping: 20 }}
+    viewport={{ once: true, amount: 0.6 }}
+  >
+    <div className="relative">
+      <motion.span
+        className="absolute inset-0 rounded-full bg-party-red/30"
+        animate={{ scale: [1, 1.5, 1], opacity: [0.7, 0, 0.7] }}
+        transition={{ duration: 2.4, repeat: Infinity, ease: 'easeOut' }}
+      />
+      <div className="relative h-6 w-6 rounded-full bg-gradient-to-br from-party-red to-party-yellow shadow-lg ring-4 ring-white" />
+    </div>
+  </motion.div>
+)
+
+const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) => {
+  const isLeft = item.side === 'left'
+  const direction = isLeft ? 'md:pr-16 md:pl-0' : 'md:pl-16 md:pr-0'
+
+  return (
+    <div className="relative md:grid md:grid-cols-2 items-center z-10">
+      <TimelineNode isLeft={isLeft} />
+
+      {/* Connector line from center to card */}
+      <div
+        className={`absolute top-14 md:top-1/2 md:-translate-y-1/2 hidden md:block ${
+          isLeft ? 'left-1/2 pr-6' : 'left-1/2 pl-6'
+        }`}
+      >
+        <div
+          className={`h-[2px] w-16 ${isLeft ? 'ml-0 mr-auto' : 'ml-auto mr-0'} bg-gradient-to-r ${
+            isLeft ? 'from-party-red/70 to-transparent' : 'from-transparent to-party-red/70'
+          }`}
+        />
+      </div>
+
+      <div className={`${isLeft ? '' : 'md:order-2'} ${direction}`}>
+        <motion.article
+          initial={{ opacity: 0, x: isLeft ? -60 : 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ delay: index * 0.05, type: 'spring', stiffness: 140, damping: 18 }}
+          className="group bg-white/80 backdrop-blur rounded-2xl border border-white/60 shadow-xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+        >
+          <div className="flex items-center gap-3 px-6 pt-5">
+            {/* Năm hiển thị rõ ngay trên card */}
+            <span className="text-sm md:text-base font-semibold tracking-wide text-party-red">
+              {item.year}
+            </span>
+            {item.tag && (
+              <span className="rounded-full bg-gray-900/5 px-3 py-1 text-xs font-semibold text-gray-700">
+                {item.tag}
+              </span>
+            )}
+            {item.icon && <span className="ml-auto text-2xl">{item.icon}</span>}
+          </div>
+
+          {item.image && (
+            <div className="mt-4 max-h-72 overflow-hidden">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none'
+                }}
+              />
+            </div>
+          )}
+
+          <div className="px-6 py-5 space-y-3">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+              {item.title}
+            </h3>
+            <p className="text-gray-600 leading-relaxed text-sm md:text-base">{item.description}</p>
+            <div className="h-1 w-16 bg-gradient-to-r from-party-red to-party-yellow rounded-full" />
+          </div>
+        </motion.article>
+      </div>
+
+      <div className={`${isLeft ? 'md:order-2' : ''} hidden md:block`} />
+    </div>
+  )
+}
 
 const Timeline = () => {
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      offset: 100,
-    })
+    document.title = 'Timeline Đổi mới 1986-1996'
   }, [])
 
   return (
-    <section id="timeline-section" className="py-20 px-4 relative overflow-hidden">
-      {/* Background image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{
-          backgroundImage: `url(/timeline-background.png)`,
-        }}
-      >
-        <div className="absolute inset-0 bg-white/85"></div>
-      </div>
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-party-yellow/5 rounded-full blur-3xl -mr-48 -mt-48"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-party-red/5 rounded-full blur-3xl -ml-48 -mb-48"></div>
-      
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16" data-aos="fade-up">
-          <h2 className="text-4xl md:text-5xl font-bold text-party-red mb-4">
-            9. Timeline
-          </h2>
-          <div className="w-24 h-1 bg-party-yellow mx-auto mb-6"></div>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Các sự kiện nổi bật trong giai đoạn Đổi mới 1986-1996
+    <section id="timeline-section" className="relative overflow-hidden bg-gradient-to-b from-white via-party-yellow/5 to-white py-20 px-4">
+      <div
+        className="absolute inset-0 bg-[url('/timeline-background.png')] bg-cover bg-center opacity-10"
+        aria-hidden
+      />
+      <div className="absolute -left-20 top-24 h-72 w-72 rounded-full bg-party-red/5 blur-3xl" aria-hidden />
+      <div className="absolute -right-24 bottom-16 h-80 w-80 rounded-full bg-party-yellow/10 blur-3xl" aria-hidden />
+
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <header className="text-center mb-16" data-aos="fade-up">
+          <p className="text-sm uppercase tracking-[0.2em] text-party-red font-semibold">
+            Giai đoạn Đổi mới 1986 - 1996
           </p>
-        </div>
+          <h2 className="mt-3 text-4xl md:text-5xl font-bold text-gray-900">Giai đoạn Đổi mới 1986 - 1996</h2>
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
+            Dòng thời gian các cột mốc quan trọng của Việt Nam trong giai đoạn Đổi mới 1986 - 1996.
+          </p>
+        </header>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-party-red via-party-yellow to-party-red transform md:-translate-x-1/2"></div>
+          {/* Đường line trung tâm luôn hiển thị - màu nổi bật hơn */}
+          <div className="absolute inset-y-4 left-1/2 -translate-x-1/2 pointer-events-none z-0 flex justify-center">
+            <div className="h-full w-[5px] rounded-full bg-gradient-to-b from-white via-party-red to-white shadow-[0_0_12px_rgba(239,68,68,0.7)]" />
+          </div>
 
-          {/* Timeline items */}
-          <div className="space-y-12">
-            {[
-              { 
-                year: '1986', 
-                title: 'Đại hội VI – Bắt đầu Đổi mới', 
-                side: 'left',
-                description: 'Đại hội đại biểu toàn quốc lần thứ VI khởi xướng đường lối đổi mới toàn diện',
-                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-wNHez3aWDO64aOc4nYA7r7OiQ7o4fJDbMw&s'
-              },
-              { 
-                year: '1987', 
-                title: 'Luật Đầu tư nước ngoài', 
-                side: 'right',
-                description: 'Lần đầu cho phép đầu tư trực tiếp nước ngoài (FDI) vào Việt Nam',
-                image: 'https://cdn-images.vtv.vn/zoom/700_438/2018/9/30/luat-1538313424642605275499.png'
-
-              },
-              { 
-                year: '1988', 
-                title: 'Khoán 10 – Nông nghiệp đổi mới', 
-                side: 'left',
-                description: 'Nghị quyết 10 giao ruộng ổn định 15 năm, bùng nổ sản xuất nông nghiệp',
-                image: 'https://thinhvuongvietnam.com/Content/UploadFiles/EditorFiles/images/2021/Quy2/vnapotal90namdcsvietnamtukhoan10dencuongquocxuatkhaugao-baihoclonvetindantrongdanvaquyettamdoimoicuadan101652228stand05042021053913.jpg'
-              },
-              { 
-                year: '1989', 
-                title: 'Rút quân khỏi Campuchia', 
-                icon: '🌐', 
-                side: 'right',
-                description: 'Rút toàn bộ quân tình nguyện, mở ra thời kỳ hòa bình mới',
-                image:'https://ngaymoionline.com.vn/stores/news_dataimages/2024/012024/05/22/in_article/c03d7aee-d117-407b-8c36-1fdbcc45631520240105220621.jpg?rt=20240105220622'
-              },
-              { 
-                year: '1991', 
-                title: 'Đại hội VII – Thông qua Cương lĩnh', 
-                icon: '📜', 
-                side: 'left',
-                description: 'Thông qua Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên CNXH',
-                image:'https://cdn.baobackan.vn/images/4c9bb5fac88a6adb6aee22ba8ece2b57153657331df800e0c9cf207fcb8fd7603cbf91bd54c02e0de825c63366ed826cd973a04cfc4daa35381ac55e6431b0a5/vii.png.webp'
-              },
-              { 
-                year: '1994', 
-                title: 'Hội nghị giữa nhiệm kỳ – Nêu 4 nguy cơ', 
-                icon: '⚠️', 
-                side: 'right',
-                description: 'Xác định 4 nguy cơ đe dọa sự nghiệp đổi mới',
-                image: 'https://bcp.cdnchinhphu.vn/Uploaded_VGP/nguyenductuan/20090930/BemacdaihoiVII.jpg'
-              },
-              { 
-                year: '1995', 
-                title: 'Gia nhập ASEAN, bình thường hóa với Mỹ', 
-                icon: '🤝', 
-                side: 'left',
-                description: 'Mốc son trong hội nhập quốc tế, phá thế bao vây cấm vận',
-                image: 'https://cdn.nbtv.vn/upload/news/11_2020/44_20480229112020.jpg'
-              },
-              { 
-                year: '1996', 
-                title: 'Hoàn thiện giai đoạn đầu của Đổi mới', 
-                icon: '✅', 
-                side: 'right',
-                description: 'Kết thúc giai đoạn đầu đổi mới, đặt nền móng cho phát triển tiếp theo',
-                image: 'https://baonamdinh.vn/file/e7837c02816d130b0181a995d7ad7e96/dataimages//201607/original/images1274056_1.jpg?gidzl=E1Rm7xDFt3av2VCPlLJQEpO5zXog2uu-BbgZJwfKYpnxNVOVg0pRCNvHz1F_MjepVWVs5ZIoQ1uNk4RMFW'
-              },
-            ].map((item, index) => (
-              <div key={index} className="relative flex items-center">
-                {/* Timeline dot */}
-                <div className="absolute left-6 md:left-1/2 w-6 h-6 bg-party-red rounded-full border-4 border-white shadow-lg transform md:-translate-x-1/2 z-10"></div>
-                
-                {/* Content card */}
-                <div 
-                  className={`w-full md:w-5/12 ml-20 md:ml-0 ${item.side === 'left' ? 'md:mr-auto' : 'md:ml-auto'}`}
-                  data-aos={item.side === 'left' ? 'fade-right' : 'fade-left'}
-                  data-aos-delay={index * 100}
-                >
-                  <div className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-party-red hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                    {item.image && (
-                      <div className="mb-4 rounded-lg overflow-hidden">
-                        <img 
-                          src={item.image} 
-                          alt={item.title}
-                          className="w-full h-48 object-cover"
-                          loading="lazy"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none'
-                          }}
-                        />
-                      </div>
-                    )}
-                    <div className="flex items-center gap-4 mb-3">
-                      {item.icon && <span className="text-3xl">{item.icon}</span>}
-                      <div>
-                        <div className="text-party-red font-bold text-sm">{item.year}</div>
-                        <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                      </div>
-                    </div>
-                    <p className="text-gray-600 leading-relaxed text-sm">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
+          <div className="relative space-y-12 md:space-y-20 z-10">
+            {timelineData.map((item, index) => (
+              <TimelineCard key={`${item.year}-${item.title}`} item={item} index={index} />
             ))}
           </div>
         </div>

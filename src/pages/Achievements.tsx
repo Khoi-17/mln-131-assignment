@@ -3,6 +3,54 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { images, handleImageError } from '../utils/images'
 
+const navLinks = [
+  { label: 'Tổng quan', href: '#overview' },
+  { label: 'Nguy cơ & thách thức', href: '#risks' },
+  { label: 'Thời cơ & sức mạnh', href: '#strengths' },
+  { label: 'Nhà nước pháp quyền', href: '#rule-of-law' },
+  { label: 'Con người trung tâm', href: '#human' },
+]
+
+const significancePoints = [
+  'Lần đầu tổ chức Hội nghị giữa nhiệm kỳ trong bối cảnh biến động nhanh.',
+  'Đổi mới là sự nghiệp khó khăn, chưa có tiền lệ nhưng đã đạt thắng lợi quan trọng.',
+  'Đảng giữ vững vai trò lãnh đạo duy nhất; phát huy độc lập, tự chủ, sáng tạo.',
+  'Đường lối phù hợp quy luật và thực tiễn Việt Nam; đại đoàn kết và hợp tác quốc tế là động lực.',
+]
+
+const riskItems = [
+  {
+    title: 'Nguy cơ tụt hậu xa hơn về kinh tế',
+    detail: 'Điểm xuất phát thấp, tăng trưởng chưa vững; cạnh tranh quốc tế gay gắt.',
+  },
+  {
+    title: 'Nguy cơ chệch hướng XHCN',
+    detail: 'Nếu không khắc phục lệch lạc trong chủ trương, chính sách, chỉ đạo thực hiện.',
+  },
+  { title: 'Tham nhũng, quan liêu', detail: 'Làm suy giảm niềm tin, kìm hãm phát triển.' },
+  { title: '“Diễn biến hòa bình”', detail: 'Nguy cơ từ các thế lực thù địch; liên quan mật thiết với các nguy cơ khác.' },
+]
+
+const strengthItems = [
+  'Đảng có đường lối đúng, đoàn kết, thống nhất.',
+  'Nhân dân cần cù, thông minh, yêu nước, tin tưởng vào Đảng.',
+  'Lực lượng vũ trang tuyệt đối trung thành với sự nghiệp cách mạng.',
+  'Thành tựu đổi mới tạo thế và lực mới cho đất nước.',
+  'Khoa học – kỹ thuật phát triển, hợp tác quốc tế mở rộng đem lại nguồn lực quan trọng.',
+]
+
+const ruleOfLawPoints = [
+  'Nhà nước pháp quyền XHCN của nhân dân, do nhân dân, vì nhân dân dưới sự lãnh đạo của Đảng.',
+  'Quyền lực nhà nước thống nhất; có phân công, phối hợp giữa lập pháp – hành pháp – tư pháp.',
+  'Tăng cường pháp chế XHCN; quản lý bằng pháp luật gắn với giáo dục đạo đức và nâng cao dân trí.',
+  'Hội nghị TW8 (1/1995): chủ trương hoàn thiện Nhà nước, cải cách hành chính, cụ thể hóa Nhà nước pháp quyền.',
+]
+
+const humanCentered = {
+  intro: 'Con người là nhân tố quyết định, động lực lớn nhất và chủ thể sáng tạo mọi giá trị vật chất, tinh thần; hạnh phúc con người là mục tiêu cao nhất.',
+  resolutions: ['Giáo dục – đào tạo', 'Văn hóa – văn nghệ', 'Chăm sóc, bảo vệ sức khỏe nhân dân', 'Chính sách dân số & KHHGĐ', 'Công tác thanh niên'],
+}
+
 const Achievements = () => {
   useEffect(() => {
     AOS.init({
@@ -13,190 +61,228 @@ const Achievements = () => {
     })
   }, [])
 
+  const backgroundStyle = {
+    backgroundImage: 'url("/download.jpg")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundAttachment: 'fixed' as const,
+  }
+
   return (
-    <>
-      {/* Section 3: Thành tựu nổi bật */}
-      <section id="achievements-section" className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-party-red mb-4">
-              Thành tựu nổi bật giai đoạn 1986–1996
-            </h2>
-            <div className="w-24 h-1 bg-party-yellow mx-auto mb-6"></div>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Những thành tựu to lớn đạt được sau 10 năm thực hiện đường lối đổi mới toàn diện đất nước.
-            </p>
-          </div>
-
-          {/* Hình ảnh phát triển - Thành tựu sau đổi mới */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <div data-aos="zoom-in" data-aos-delay="0" className="rounded-lg overflow-hidden shadow-xl">
-              <img 
-                src={images.achievement} 
-                alt="Thành tựu kinh tế sau đổi mới" 
-                className="w-full h-48 object-cover hover:scale-110 transition-transform duration-500"
-                onError={(e) => handleImageError(e, 'achievement')}
-                loading="lazy"
-              />
-              <div className="bg-white p-3">
-                <p className="text-sm text-gray-600 text-center font-medium">Thành tựu kinh tế</p>
-                <p className="text-xs text-gray-500 text-center mt-1">Sau đổi mới 1986-1996</p>
+    <div className="relative">
+      <div className="absolute inset-0" style={backgroundStyle} aria-hidden />
+      <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" aria-hidden />
+      <div className="relative z-10">
+        {/* Hero */}
+        <section className="relative overflow-hidden bg-gradient-to-b from-white/70 via-white/60 to-white/70 py-16 px-4">
+          <div className="absolute top-0 right-0 w-72 h-72 bg-party-red/5 blur-3xl -mr-32 -mt-32" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-party-yellow/10 blur-3xl -ml-36 -mb-36" />
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage: "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.35) 1px, transparent 0)",
+              backgroundSize: '32px 32px',
+            }}
+          />
+          <div className="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-10 items-center">
+            <div data-aos="fade-right">
+              <p className="text-xs md:text-sm uppercase tracking-[0.28em] text-party-red font-semibold mb-4">
+                Hội nghị giữa nhiệm kỳ • 1994
+              </p>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                Hội nghị giữa nhiệm kỳ: củng cố đường lối đổi mới
+              </h1>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Lần đầu tổ chức trong bối cảnh thế giới và trong nước biến đổi nhanh; khẳng định ý chí đổi mới, nhận diện
+                nguy cơ – thời cơ và đặt nền tảng xây dựng Nhà nước pháp quyền, coi con người là trung tâm.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <span className="px-4 py-2 rounded-full bg-party-red/10 text-party-red text-sm font-semibold">1994</span>
+                <span className="px-4 py-2 rounded-full bg-party-yellow/20 text-party-red text-sm font-semibold">
+                  Giữa nhiệm kỳ khóa VII
+                </span>
+                <span className="px-4 py-2 rounded-full bg-gray-900/5 text-gray-700 text-sm font-semibold">Đổi mới</span>
               </div>
             </div>
-            <div data-aos="zoom-in" data-aos-delay="100" className="rounded-lg overflow-hidden shadow-xl">
-              <img 
-                src={images.development} 
-                alt="Phát triển cơ sở hạ tầng" 
-                className="w-full h-48 object-cover hover:scale-110 transition-transform duration-500"
-                onError={(e) => handleImageError(e, 'development')}
-                loading="lazy"
-              />
-              <div className="bg-white p-3">
-                <p className="text-sm text-gray-600 text-center font-medium">Cơ sở hạ tầng</p>
-                <p className="text-xs text-gray-500 text-center mt-1">Phát triển mạnh mẽ</p>
-              </div>
-            </div>
-            <div data-aos="zoom-in" data-aos-delay="200" className="rounded-lg overflow-hidden shadow-xl">
-              <img 
-                src={images.urban} 
-                alt="Đô thị hóa và phát triển" 
-                className="w-full h-48 object-cover hover:scale-110 transition-transform duration-500"
-                onError={(e) => handleImageError(e, 'urban')}
-                loading="lazy"
-              />
-              <div className="bg-white p-3">
-                <p className="text-sm text-gray-600 text-center font-medium">Đô thị hóa</p>
-                <p className="text-xs text-gray-500 text-center mt-1">Thành phố phát triển</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { icon: '🏭', title: 'Công nghiệp hóa' },
-              { icon: '🌾', title: 'Nông nghiệp phát triển' },
-              { icon: '💼', title: 'Kinh tế thị trường' },
-              { icon: '🌍', title: 'Hội nhập quốc tế' },
-              { icon: '👥', title: 'Cải thiện đời sống' },
-              { icon: '📚', title: 'Giáo dục đổi mới' },
-            ].map((item, index) => (
-              <div 
-                key={index} 
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-                className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-party-yellow"
-              >
-                <div className="text-6xl mb-6 transform hover:scale-110 transition-transform duration-300">{item.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Những thành tựu quan trọng trong lĩnh vực {item.title.toLowerCase()} góp phần đưa đất nước phát triển vững chắc.
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4: Ý nghĩa lịch sử */}
-      <section id="significance-section" className="py-20 px-4 bg-gradient-to-br from-party-red to-party-red-dark text-white relative overflow-hidden">
-        {/* Background image với parallax */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{
-            backgroundImage: `url(${images.history})`,
-          }}
-        ></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-party-red/95 to-party-red-dark/95"></div>
-        
-        <div className="max-w-5xl mx-auto relative z-10">
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 border-2 border-white/20 shadow-2xl" data-aos="fade-up">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Ý nghĩa lịch sử của Đổi Mới
-              </h2>
-              <div className="w-24 h-1 bg-party-yellow mx-auto"></div>
-            </div>
-
-            <div className="space-y-8">
-              <div className="space-y-4 text-lg md:text-xl leading-relaxed text-white/95">
-                <p data-aos="fade-up" data-aos-delay="100">
-                  <strong>7. Ý nghĩa Đại hội VI</strong>
-                </p>
-                <ul className="space-y-3 ml-6" data-aos="fade-up" data-aos-delay="150">
-                  <li className="flex items-start">
-                    <span className="text-party-yellow mr-3">•</span>
-                    <span>Khởi xướng đường lối đổi mới toàn diện</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-party-yellow mr-3">•</span>
-                    <span>Đưa đất nước thoát khỏi khủng hoảng kéo dài</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-party-yellow mr-3">•</span>
-                    <span>Xây dựng mô hình kinh tế thị trường định hướng XHCN</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-party-yellow mr-3">•</span>
-                    <span>Tạo nền tảng cho các thành tựu kinh tế – xã hội 1990s và đầu thế kỷ XXI</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Hình ảnh tư liệu dân tộc */}
-              <div className="rounded-lg overflow-hidden shadow-2xl" data-aos="zoom-in" data-aos-delay="200">
-                <img 
-                  src={images.document} 
-                  alt="Tư liệu lịch sử Việt Nam giai đoạn 1986-1996" 
-                  className="w-full h-64 object-cover"
-                  onError={(e) => handleImageError(e, 'document')}
+            <div data-aos="fade-left" className="relative">
+              <div className="rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/40">
+                <img
+                  src={images.congress1}
+                  alt="Hội nghị giữa nhiệm kỳ 1994"
+                  className="w-full h-80 object-cover"
+                  onError={(e) => handleImageError(e, 'congress')}
                   loading="lazy"
                 />
-                <div className="bg-black/50 p-4 text-center">
-                  <p className="text-white text-sm font-medium">Tư liệu lịch sử Đổi mới</p>
-                  <p className="text-white/80 text-xs mt-1">Giai đoạn 1986-1996</p>
-                </div>
               </div>
-
-              <div className="bg-white/20 rounded-lg p-8 border-l-4 border-party-yellow" data-aos="fade-up" data-aos-delay="300">
-                <div className="flex items-start gap-4">
-                  <svg className="w-8 h-8 text-party-yellow flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.996 2.151c-3.313.767-5.962 3.493-5.962 7.346h2v10h-7.017zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-3.313.767-5.962 3.493-5.962 7.346h2v10h-7.034z"/>
-                  </svg>
-                  <blockquote className="text-xl md:text-2xl font-serif italic text-white leading-relaxed">
-                    "Đổi mới là bước ngoặt mang tính lịch sử của Đảng và nhân dân Việt Nam."
-                  </blockquote>
-                </div>
+              <div className="absolute -bottom-6 left-6 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
+                <p className="text-sm font-semibold text-gray-900">Hội nghị giữa nhiệm kỳ 1994</p>
+                <p className="text-xs text-gray-600">Khẳng định quyết tâm đổi mới và các nguy cơ, thời cơ mới</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Section 4.5: Hạn chế */}
-      <section id="limitations-section" className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-party-red mb-4">
-              8. Hạn chế
-            </h2>
-            <div className="w-24 h-1 bg-party-yellow mx-auto mb-6"></div>
+        {/* Quick nav */}
+        <section className="py-6 px-4 bg-white/60">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-center gap-2 text-xs text-gray-500 mb-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-party-red" />
+              <span>Đi đến nhanh</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 hover:bg-party-red/10 text-sm font-semibold text-gray-800 border border-gray-200 transition"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-party-red" />
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </div>
+        </section>
 
-          <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-orange-400" data-aos="fade-up">
-            <ul className="space-y-4 text-gray-700 text-lg">
-              <li className="flex items-start">
-                <span className="text-orange-500 mr-3 font-bold">•</span>
-                <span>Chưa có giải pháp mạnh để tháo gỡ rối ren phân phối – lưu thông</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-orange-500 mr-3 font-bold">•</span>
-                <span>Một số vấn đề tư duy kinh tế còn mới mẻ, triển khai còn thận trọng</span>
-              </li>
-            </ul>
+        {/* Ý nghĩa hội nghị */}
+        <section id="overview" className="py-16 px-4 bg-white/60 scroll-mt-20">
+          <div className="max-w-6xl mx-auto space-y-8">
+            <div className="text-center" data-aos="fade-up">
+              <p className="text-xs uppercase tracking-[0.28em] text-party-red font-semibold">Ý nghĩa</p>
+              <h2 className="mt-3 text-3xl md:text-4xl font-bold text-gray-900">Hội nghị giữa nhiệm kỳ (1994)</h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="rounded-2xl bg-white shadow-lg p-8 border border-gray-100" data-aos="fade-right">
+                <p className="text-sm font-semibold text-party-yellow uppercase tracking-[0.2em] mb-2">Bối cảnh</p>
+                <p className="text-gray-700 leading-relaxed">
+                  Lần đầu Đảng tổ chức hội nghị giữa nhiệm kỳ khi thế giới biến động, trong nước đổi mới hơn 4 năm, cần tổng
+                  kết, nhận diện nguy cơ và củng cố niềm tin.
+                </p>
+              </div>
+              <div
+  className="rounded-2xl bg-white shadow-md p-8 
+  border border-gray-200 hover:shadow-lg 
+  transition-shadow duration-300"
+  data-aos="fade-left"
+>
+                <p className="text-sm font-semibold text-party-red uppercase tracking-[0.2em] mb-2">Khẳng định</p>
+                <ul className="space-y-2 text-gray-800 text-sm leading-relaxed">
+                  {significancePoints.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="text-party-red font-bold">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-    </>
+        </section>
+
+        {/* Nguy cơ & thách thức */}
+        <section id="risks" className="py-16 px-4 bg-gradient-to-b from-white/40 via-white/30 to-white/40 scroll-mt-20">
+          <div className="max-w-6xl mx-auto space-y-8">
+            <div className="text-center" data-aos="fade-up">
+              <p className="text-xs uppercase tracking-[0.28em] text-party-red font-semibold">Nhận thức mới</p>
+              <h2 className="mt-3 text-3xl md:text-4xl font-bold text-gray-900">4 nguy cơ lớn</h2>
+              <p className="mt-3 text-gray-600 max-w-3xl mx-auto">
+                Các nguy cơ liên quan mật thiết và tác động lẫn nhau; cảnh báo sớm để giữ vững định hướng XHCN.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              {riskItems.map((item, idx) => (
+                <div
+                  key={item.title}
+                  className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition"
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 50}
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-party-red" />
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
+                      <p className="text-sm text-gray-700 mt-1 leading-relaxed">{item.detail}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Thời cơ & sức mạnh */}
+        <section id="strengths" className="py-16 px-4 bg-white/60 scroll-mt-20">
+          <div className="max-w-6xl mx-auto space-y-8">
+            <div className="text-center" data-aos="fade-up">
+              <p className="text-xs uppercase tracking-[0.28em] text-party-red font-semibold">Thời cơ và sức mạnh</p>
+              <h2 className="mt-3 text-3xl md:text-4xl font-bold text-gray-900">Nguồn lực bảo đảm thắng lợi</h2>
+            </div>
+            <div className="rounded-2xl border border-green-200 bg-green-50 p-8 shadow-sm" data-aos="fade-up">
+              <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-800">
+                {strengthItems.map((item) => (
+                  <div key={item} className="flex items-start gap-2">
+                    <span className="text-green-700 font-bold">•</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Nhà nước pháp quyền */}
+        <section id="rule-of-law" className="py-16 px-4 bg-gradient-to-b from-white/40 via-white/30 to-white/40 scroll-mt-20">
+          <div className="max-w-6xl mx-auto space-y-8">
+            <div className="text-center" data-aos="fade-up">
+              <p className="text-xs uppercase tracking-[0.28em] text-party-red font-semibold">Nhà nước pháp quyền</p>
+              <h2 className="mt-3 text-3xl md:text-4xl font-bold text-gray-900">Lần đầu khẳng định rõ</h2>
+              <p className="mt-3 text-gray-600 max-w-3xl mx-auto">
+                Văn kiện hội nghị nêu xây dựng Nhà nước pháp quyền Việt Nam của nhân dân, do nhân dân, vì nhân dân; TW8
+                (1/1995) cụ thể hóa và chủ trương hoàn thiện bộ máy, cải cách hành chính.
+              </p>
+            </div>
+            <div className="rounded-2xl bg-white shadow-lg p-8 border border-gray-100" data-aos="fade-up">
+              <ul className="space-y-3 text-gray-800 text-sm leading-relaxed">
+                {ruleOfLawPoints.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="text-party-red font-bold">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Con người trung tâm */}
+        <section id="human" className="py-16 px-4 bg-white/60 scroll-mt-20">
+          <div className="max-w-6xl mx-auto space-y-10">
+            <div className="text-center" data-aos="fade-up">
+              <p className="text-xs uppercase tracking-[0.28em] text-party-red font-semibold">Con người là nhân tố quyết định</p>
+              <h2 className="mt-3 text-3xl md:text-4xl font-bold text-gray-900">Mục tiêu cao nhất: hạnh phúc con người</h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 items-start">
+              <div className="p-8 rounded-2xl border border-gray-100 bg-white shadow-sm" data-aos="fade-right">
+                <p className="text-sm text-gray-700 leading-relaxed">{humanCentered.intro}</p>
+                <p className="mt-4 text-xs text-gray-500 uppercase tracking-[0.2em] font-semibold">
+                  Hội nghị Trung ương 4: 5 nghị quyết về con người
+                </p>
+              </div>
+              <div className="p-8 rounded-2xl border border-white bg-gradient-to-r from-party-yellow/10 to-party-red/10 shadow-sm" data-aos="fade-left">
+                <div className="grid sm:grid-cols-2 gap-3 text-sm text-gray-900">
+                  {humanCentered.resolutions.map((item) => (
+                    <div key={item} className="px-4 py-3 rounded-lg bg-white border border-gray-100 shadow-sm">
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-4 text-xs text-gray-600 italic">Tất cả là do con người, tất cả vì hạnh phúc con người.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
   )
 }
 

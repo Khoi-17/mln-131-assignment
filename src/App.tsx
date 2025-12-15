@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
-import Background from './pages/Background'
 import CongressVI from './pages/CongressVI'
 import ImplementationVI from './pages/ImplementationVI'
 import CongressVII from './pages/CongressVII'
 import Achievements from './pages/Achievements'
 import Timeline from './pages/Timeline'
+import Video from './pages/Video'
 
 function App() {
   return (
@@ -14,12 +14,12 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/background" element={<Background />} />
           <Route path="/congress-vi" element={<CongressVI />} />
           <Route path="/implementation-vi" element={<ImplementationVI />} />
           <Route path="/congress-vii" element={<CongressVII />} />
-          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/midterm-congress-vii" element={<Achievements />} />
           <Route path="/timeline" element={<Timeline />} />
+          <Route path="/tong-hop" element={<Video />} />
         </Routes>
         <div id="webchat-container"></div>
         <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
