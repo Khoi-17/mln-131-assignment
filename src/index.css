@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: rgb(17 24 39);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lora', Georgia, serif;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Parallax effect for images */
+.parallax-image {
+  will-change: transform;
+  transition: transform 0.3s ease-out;
+}
+
+/* Smooth image zoom on hover */
+.image-zoom {
+  transition: transform 0.5s ease-in-out;
+}
+
+.image-zoom:hover {
+  transform: scale(1.05);
+}
+
+/* Gradient text animation */
+.gradient-text {
+  background: linear-gradient(90deg, #DC143C, #FFD700, #DC143C);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
