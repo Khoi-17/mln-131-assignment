@@ -83,21 +83,6 @@ const partyRenewal = [
   'Đổi mới phương thức lãnh đạo',
 ]
 
-const midtermRisks = [
-  'Nguy cơ tụt hậu xa hơn về kinh tế',
-  'Nguy cơ chệch hướng XHCN',
-  'Tham nhũng, quan liêu',
-  '“Diễn biến hòa bình” từ các thế lực thù địch',
-]
-
-const midtermStrengths = [
-  'Đường lối đúng, Đảng đoàn kết',
-  'Nhân dân cần cù, yêu nước, tin Đảng',
-  'Lực lượng vũ trang tuyệt đối trung thành',
-  'Thành tựu đổi mới tạo thế và lực mới',
-  'Khoa học – kỹ thuật và hợp tác quốc tế mở rộng',
-]
-
 const CongressVII = () => {
   useEffect(() => {
     AOS.init({
