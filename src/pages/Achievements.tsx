@@ -90,7 +90,7 @@ const Achievements = () => {
                 Hội nghị giữa nhiệm kỳ • 1994
               </p>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                Hội nghị giữa nhiệm kỳ: củng cố đường lối đổi mới
+                Hội nghị giữa nhiệm kỳ: Củng cố đường lối đổi mới
               </h1>
               <p className="text-lg text-gray-700 leading-relaxed">
                 Lần đầu tổ chức trong bối cảnh thế giới và trong nước biến đổi nhanh; khẳng định ý chí đổi mới, nhận diện
@@ -160,11 +160,11 @@ const Achievements = () => {
                 </p>
               </div>
               <div
-  className="rounded-2xl bg-white shadow-md p-8 
+                className="rounded-2xl bg-white shadow-md p-8 
   border border-gray-200 hover:shadow-lg 
   transition-shadow duration-300"
-  data-aos="fade-left"
->
+                data-aos="fade-left"
+              >
                 <p className="text-sm font-semibold text-party-red uppercase tracking-[0.2em] mb-2">Khẳng định</p>
                 <ul className="space-y-2 text-gray-800 text-sm leading-relaxed">
                   {significancePoints.map((item) => (

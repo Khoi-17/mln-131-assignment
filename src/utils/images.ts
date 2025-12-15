@@ -5,7 +5,7 @@ export const images = {
   
   // Đại hội VI (1986) - Hình ảnh cuộc họp/chính trị
   congress: 'https://cdncongthuong.quangtrung.vn/static_files/duyhien/images/2025/11/04/dh6-9d17.png',
-  congress1: 'https://media.vietnamplus.vn/images/fbc23bef0d088b23a8965bce49f85a617b098fa7b34c91cea8e80f691bfd3659fc5d024aeb1c5c1a1b6b0aaf1b687f2f/2001DH1.jpg',
+  congress1: 'https://baovinhlong.com.vn/file/e7837c027f6ecd14017ffa4e5f2a0e34/dataimages/202101/original/images2342333_BVL_a__12_.jpg',
   // Kinh tế khó khăn - Tiền tệ, tài chính (old money/currency)
   economy: 'https://thegioitien.vn/wp-content/uploads/b%E1%BB%99-85.jpg',
   

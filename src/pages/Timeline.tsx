@@ -84,7 +84,14 @@ const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) =>
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
               {item.title}
             </h3>
-            <p className="text-gray-600 leading-relaxed text-sm md:text-base">{item.description}</p>
+            <ul className="list-disc pl-5 space-y-1 text-gray-600 text-sm md:text-base">
+  {item.description
+    .split(';')
+    .filter(Boolean)
+    .map((line, i) => (
+      <li key={i}>{line.trim()}</li>
+    ))}
+</ul>
             <div className="h-1 w-16 bg-gradient-to-r from-party-red to-party-yellow rounded-full" />
           </div>
         </motion.article>

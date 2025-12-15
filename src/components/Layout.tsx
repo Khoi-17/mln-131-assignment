@@ -47,9 +47,11 @@ const Layout = ({ children }: LayoutProps) => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-md">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <Link to="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-party-red">Lịch Sử Việt Nam</span>
-              <span className="text-sm text-gray-600">Đổi Mới Toàn Diện 1986-1996</span>
+            <Link to="/" className="flex items-center space-x-3">
+              <div className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center shadow-md">
+                <span className="text-yellow-300 text-lg leading-none">★</span>
+              </div>
+              <span className="text-2xl font-bold text-party-red">Đổi Mới Toàn Diện 1986-1996</span>
             </Link>
             
             <div className="hidden md:flex items-center space-x-1">
@@ -58,7 +60,8 @@ const Layout = ({ children }: LayoutProps) => {
               <NavLink to="/congress-vii" label="Đại hội VII" isActive={isActive('/congress-vii')} />
               <NavLink to="/midterm-congress-vii" label="Hội Nghị" isActive={isActive('/midterm-congress-vii')} />
               <NavLink to="/timeline" label="Timeline" isActive={isActive('/timeline')} />
-              <NavLink to="/tong-hop" label="Video" isActive={isActive('/tong-hop')} />
+              <NavLink to="/video" label="Video" isActive={isActive('/video')} />
+              <NavLink to="/thong-tin" label="Thông tin" isActive={isActive('/thong-tin')} />
             </div>
 
             {/* Mobile menu button */}
@@ -137,7 +140,7 @@ const NavLink = ({ to, label, isActive }: NavLinkProps) => {
       to={to}
       className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
         isActive
-          ? 'bg-party-red text-white'
+          ? 'bg-party-red/10 text-party-red border border-party-red/60'
           : 'text-gray-700 hover:bg-gray-100'
       }`}
     >

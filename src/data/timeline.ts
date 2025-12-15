@@ -18,7 +18,7 @@ export const timelineData: TimelineItem[] = [
     tag: 'Khởi đầu',
   },
   {
-    year: '1987',
+    year: '1988',
     title: 'Luật Đầu tư nước ngoài',
     side: 'right',
     description: 'Lần đầu cho phép đầu tư trực tiếp nước ngoài (FDI) vào Việt Nam, mở cánh cửa hội nhập.',
@@ -57,10 +57,11 @@ export const timelineData: TimelineItem[] = [
   },
   {
     year: '1994',
-    title: 'Hội nghị giữa nhiệm kỳ – Nêu 4 nguy cơ',
+    title: 'Hội nghị giữa nhiệm kỳ khóa VII (01/1994): 4 nguy cơ',
     icon: '⚠️',
     side: 'right',
-    description: 'Xác định 4 nguy cơ đe dọa sự nghiệp đổi mới, củng cố kỷ luật và cảnh giác.',
+    description:
+      'Tụt hậu xa hơn về kinh tế;Chệch hướng xã hội chủ nghĩa;\nTham nhũng, quan liêu; "Diễn biến hòa bình" từ các thế lực thù địch.',
     image: 'https://bcp.cdnchinhphu.vn/Uploaded_VGP/nguyenductuan/20090930/BemacdaihoiVII.jpg',
     tag: 'Cảnh báo',
   },

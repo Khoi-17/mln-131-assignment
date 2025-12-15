@@ -603,38 +603,6 @@ const CongressVII = () => {
               </ul>
             </div>
 
-            <div className="rounded-2xl bg-white shadow-lg p-8 border border-gray-100 space-y-8" data-aos="fade-up" data-aos-delay="50">
-              <div className="grid md:grid-cols-2 gap-6 items-start">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-party-yellow font-semibold mb-2">Hội nghị giữa nhiệm kỳ (1994)</p>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Ý nghĩa & nguy cơ</h3>
-                  <p className="text-sm text-gray-700 mb-3">
-                    Lần đầu tổ chức hội nghị giữa nhiệm kỳ trong bối cảnh thế giới và trong nước biến đổi nhanh. Hội nghị khẳng định đổi mới là sự nghiệp khó, chưa có tiền lệ; Đảng giữ vững vai trò lãnh đạo, phát huy đại đoàn kết và hợp tác quốc tế.
-                  </p>
-                  <p className="text-sm text-gray-700 font-semibold mb-2">4 nguy cơ lớn:</p>
-                  <ul className="space-y-2 text-gray-700 text-sm leading-relaxed">
-                    {midtermRisks.map((item) => (
-                      <li key={item}>• {item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="p-6 rounded-xl bg-party-yellow/10 border border-party-yellow/30">
-                  <h4 className="text-lg font-bold text-gray-900 mb-3">Thời cơ & sức mạnh</h4>
-                  <ul className="space-y-2 text-gray-800 text-sm leading-relaxed">
-                    {midtermStrengths.map((item) => (
-                      <li key={item}>• {item}</li>
-                    ))}
-                  </ul>
-                  <div className="mt-4">
-                    <h5 className="text-sm font-semibold text-gray-900 mb-2">Nhà nước pháp quyền (lần đầu khẳng định)</h5>
-                    <p className="text-sm text-gray-700">
-                      Hội nghị Trung ương 8 (1/1995) cụ thể hóa: Nhà nước pháp quyền XHCN của nhân dân, do nhân dân, vì nhân dân; quyền lực thống nhất, có phân công phối hợp lập pháp – hành pháp – tư pháp; tăng cường pháp chế XHCN; quản lý bằng pháp luật gắn giáo dục đạo đức và nâng cao dân trí.
-                    </p>
-                    <p className="text-sm text-gray-700 mt-3 italic">Quan điểm coi con người là nhân tố quyết định; hạnh phúc con người là mục tiêu cao nhất.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
       </div>
