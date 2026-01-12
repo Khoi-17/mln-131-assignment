@@ -56,9 +56,9 @@ const Layout = ({ children }: LayoutProps) => {
             
             <div className="hidden md:flex items-center space-x-1">
               <NavLink to="/" label="Trang chủ" isActive={isActive('/')} />
-              <NavLink to="/congress-vi" label="Đại hội VI" isActive={isActive('/congress-vi')} />
-              <NavLink to="/congress-vii" label="Đại hội VII" isActive={isActive('/congress-vii')} />
-              <NavLink to="/midterm-congress-vii" label="Hội Nghị" isActive={isActive('/midterm-congress-vii')} />
+              <NavLink to="/congress-vi" label="Chương III Phần III" isActive={isActive('/congress-vi')} />
+              <NavLink to="/congress-vii" label="Chương IV Phần I" isActive={isActive('/congress-vii')} />
+              <NavLink to="/midterm-congress-vii" label="Flip book" isActive={isActive('/midterm-congress-vii')} />
               <NavLink to="/timeline" label="Timeline" isActive={isActive('/timeline')} />
               <NavLink to="/video" label="Video" isActive={isActive('/video')} />
               <NavLink to="/thong-tin" label="Thông tin" isActive={isActive('/thong-tin')} />

@@ -80,7 +80,7 @@ const Home = () => {
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           <div data-aos="fade-down" data-aos-delay="100">
             <div className="inline-block px-6 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
-              <span className="text-white text-sm font-medium">Lịch sử Đảng Cộng sản Việt Nam</span>
+              <span className="text-white text-sm font-medium">Chủ nghĩa xã hội khoa học</span>
             </div>
           </div>
           
@@ -89,15 +89,8 @@ const Home = () => {
             data-aos-delay="200"
             className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl"
           >
-            Đổi mới toàn diện
+            Quá độ lên xã hội chủ nghĩa ở Việt Nam | Dân chủ và dân chủ xã hội chủ nghĩa
           </h1>
-          <h2 
-            data-aos="fade-up" 
-            data-aos-delay="300"
-            className="text-3xl md:text-5xl font-semibold text-white mb-8 drop-shadow-xl"
-          >
-            1986 – 1996
-          </h2>
           
           <p 
             data-aos="fade-up" 
@@ -112,7 +105,7 @@ const Home = () => {
               onClick={scrollToTimeline}
               className="inline-block px-8 py-4 bg-white text-party-red font-semibold text-lg rounded-full hover:bg-party-yellow-light transition-all duration-300 transform hover:scale-105 shadow-2xl"
             >
-              Khám phá các mốc Đổi mới 1986 – 1996 ↓
+              Khám phá
             </button>
           </div>
         </div>
@@ -129,7 +122,7 @@ const Home = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12" data-aos="fade-up">
               <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.3em] text-party-red">
-                Cột mốc tiêu biểu 1986 - 1996
+                
               </p>
               <h2 className="mt-4 text-3xl md:text-4xl font-bold text-gray-900">Lược đồ Timeline nhanh</h2>
               <p className="mt-3 text-gray-600 max-w-3xl mx-auto">
@@ -249,7 +242,7 @@ const Home = () => {
               </a>{" "}
               hoặc vào{" "}
               <a href="/congress-vi" className="text-party-red font-semibold hover:underline">
-                Đại hội VI
+                Chương 3 Phần 3
               </a>{" "}
               để tìm hiểu sâu hơn về đường lối Đổi mới.
             </p>
