@@ -3,22 +3,15 @@ import { useEffect } from 'react'
 const members = [
   {
     role: 'Team Leader',
-    name: 'Lê Nguyễn Trung Quý ',
-    code: 'SE184583',
-    initial: 'Q',
+    name: 'Trần Chí Tâm',
+    code: 'SE182549',
+    initial: 'T',
     icon: '👑',
   },
   {
     role: 'Member',
-    name: 'Hồ Hải Thuận',
-    code: 'SE180160',
-    initial: 'T',
-    icon: '💻',
-  },
-  {
-    role: 'Member',
-    name: 'Nguyễn Việt Đăng Khoa',
-    code: 'SE180059',
+    name: 'Nguyễn Quốc Anh Khoa',
+    code: 'SE184731',
     initial: 'K',
     icon: '📚',
   },
@@ -94,7 +87,7 @@ const ThongTin = () => {
           <div className="flex items-center justify-between gap-4 flex-wrap border-b border-gray-100 pb-4">
             <h2 className="text-2xl font-bold text-gray-900">Thành viên nhóm</h2>
             <span className="text-xs uppercase tracking-[0.24em] text-gray-500 font-semibold">
-              Lớp SE - VNR202
+              Lớp IB1807 - MLN131
             </span>
           </div>
 
