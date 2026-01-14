@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { timelineData } from '../data/timeline'
+import 'aos/dist/aos.css'
 
-const SLIDER_INTERVAL = 6000
-const featuredTimeline = timelineData.slice(0, 5)
+
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0)
-  const [activeSlide, setActiveSlide] = useState(0)
 
   useEffect(() => {
     AOS.init({
@@ -21,40 +19,27 @@ const Home = () => {
     const handleScroll = () => {
       setScrollY(window.scrollY)
     }
-    
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    if (featuredTimeline.length === 0) return
 
-    const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % featuredTimeline.length)
-    }, SLIDER_INTERVAL)
-
-    return () => clearInterval(interval)
-  }, [])
 
   const parallaxStyle = {
     transform: `translateY(${scrollY * 0.5}px)`,
   }
 
-  const scrollToTimeline = () => {
-    const section = document.getElementById('home-timeline-section')
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-  }
+
 
   return (
     <>
-      <section 
-        id="home" 
+      <section
+        id="home"
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
         {/* Background video */}
-        <video 
+        <video
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
           loop
@@ -68,32 +53,32 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-party-red/90 via-party-red-dark/85 to-party-red/90"></div>
         {/* Fallback nếu video không load được */}
         <div className="absolute inset-0 bg-gradient-to-br from-party-red via-party-red-dark to-party-red"></div>
-        
+
         {/* Pattern overlay */}
         <div className="absolute inset-0 opacity-20" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='100' height='100' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 100 0 L 0 0 0 100' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E")`
         }}></div>
-        
+
         {/* Dark overlay behind text for better readability */}
         <div className="absolute inset-0 bg-black/40 z-[5]"></div>
-        
+
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           <div data-aos="fade-down" data-aos-delay="100">
             <div className="inline-block px-6 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
               <span className="text-white text-sm font-medium">Chủ nghĩa xã hội khoa học</span>
             </div>
           </div>
-          
-          <h1 
-            data-aos="fade-up" 
+
+          <h1
+            data-aos="fade-up"
             data-aos-delay="200"
             className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl"
           >
             Quá độ lên xã hội chủ nghĩa ở Việt Nam | Dân chủ và dân chủ xã hội chủ nghĩa
           </h1>
-          
-          <p 
-            data-aos="fade-up" 
+
+          <p
+            data-aos="fade-up"
             data-aos-delay="400"
             className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
@@ -101,15 +86,15 @@ const Home = () => {
           </p>
 
           <div data-aos="zoom-in" data-aos-delay="500">
-            <button
-              onClick={scrollToTimeline}
+            <a
+              href="/congress-vi"
               className="inline-block px-8 py-4 bg-white text-party-red font-semibold text-lg rounded-full hover:bg-party-yellow-light transition-all duration-300 transform hover:scale-105 shadow-2xl"
             >
               Khám phá
-            </button>
+            </a>
           </div>
         </div>
-        
+
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -117,138 +102,124 @@ const Home = () => {
         </div>
       </section>
 
-      {featuredTimeline.length > 0 && (
-        <section id="home-timeline-section" className="bg-white py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12" data-aos="fade-up">
-              <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.3em] text-party-red">
-                
+      {/* Section 1: Quá độ lên CNXH (Đại hội VI) */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Quá độ lên <br />
+                <span className="text-blue-700">Chủ nghĩa Xã hội</span>
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed text-justify">
+                Đại hội VI đánh dấu bước ngoặt lịch sử với tư duy mới: thừa nhận thời kỳ quá độ lên chủ nghĩa xã hội là một quá trình lâu dài, khó khăn, phải trải qua nhiều chặng đường và đặc biệt là <strong className="text-gray-900">"bỏ qua chế độ tư bản chủ nghĩa"</strong>.
               </p>
-              <h2 className="mt-4 text-3xl md:text-4xl font-bold text-gray-900">Lược đồ Timeline nhanh</h2>
-              <p className="mt-3 text-gray-600 max-w-3xl mx-auto">
-                Lướt ngang để xem nhanh những dấu mốc quan trọng. Slider tự động chuyển, bạn cũng có thể chọn nhanh
-                bằng các chấm điều hướng bên dưới.
-              </p>
+
+              <div className="space-y-6 mb-10">
+                <div className="flex gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
+                  <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
+                    <span className="font-bold">1</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-1">Tính tất yếu khách quan</h4>
+                    <p className="text-sm text-gray-600">Phù hợp với quy luật phát triển của lịch sử và điều kiện cụ thể của Việt Nam.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
+                  <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
+                    <span className="font-bold">2</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-1">Bỏ qua chế độ TBCN</h4>
+                    <p className="text-sm text-gray-600">Bỏ qua việc xác lập vị trí thống trị của QHSX và KTTT tư bản chủ nghĩa.</p>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="/congress-vi"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200"
+              >
+                Tìm hiểu
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              </a>
             </div>
 
-            <div className="relative overflow-hidden rounded-3xl border border-gray-100 shadow-xl bg-gray-50">
-              <div
-                className="flex transition-transform duration-700 ease-out"
-                style={{ transform: `translateX(-${activeSlide * 100}%)` }}
-              >
-                {featuredTimeline.map((slide, index) => (
-                  <article key={slide.year} className="min-w-full grid md:grid-cols-2">
-                    <div className="relative h-64 md:h-full overflow-hidden">
-                      {slide.image && (
-                        <img
-                          src={slide.image}
-                          alt={slide.title}
-                          className="h-full w-full object-cover transition-transform duration-700 ease-out"
-                          style={{ transform: `scale(${activeSlide === index ? 1.05 : 1})` }}
-                          loading="lazy"
-                        />
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/20 to-transparent" />
-                      <div className="absolute bottom-4 left-4 text-white">
-                        <p className="text-sm uppercase tracking-[0.3em] text-white/80">Năm</p>
-                        <p className="text-4xl font-bold">{slide.year}</p>
-                      </div>
-                    </div>
-                    <div className="p-8 md:p-12 flex flex-col justify-center bg-white">
-                      <div className="inline-flex items-center gap-2 text-sm text-party-red font-semibold">
-                        {slide.tag && (
-                          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-party-red/10 text-party-red">
-                            {slide.tag}
-                          </span>
-                        )}
-                        {slide.icon && <span className="text-xl">{slide.icon}</span>}
-                      </div>
-                      <h3 className="mt-4 text-2xl md:text-3xl font-bold text-gray-900">{slide.title}</h3>
-                      <p className="mt-3 text-gray-600 leading-relaxed">{slide.description}</p>
-                      <a
-                        href="/timeline"
-                        className="mt-6 inline-flex items-center gap-2 text-party-red font-semibold hover:gap-3 transition-all"
-                      >
-                        Xem chi tiết trong Timeline
-                        <span aria-hidden>→</span>
-                      </a>
-                    </div>
-                  </article>
-                ))}
+            <div className="relative" data-aos="fade-left">
+              <div className="absolute inset-0 bg-blue-600 rounded-[3rem] rotate-3 opacity-10"></div>
+              <img
+                src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NTTX/291024/thoi-ky-qua-do.jpg"
+                alt="Đại hội VI"
+                className="relative rounded-[3rem] shadow-2xl w-full h-[500px] object-cover"
+              />
+              <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 max-w-xs">
+                <p className="italic text-gray-600 font-serif">"Nhìn thẳng vào sự thật, đánh giá đúng sự thật, nói rõ sự thật"</p>
               </div>
             </div>
-
-            <div className="mt-8 flex justify-center gap-3">
-              {featuredTimeline.map((slide, index) => (
-                <button
-                  key={slide.year}
-                  onClick={() => setActiveSlide(index)}
-                  className={`h-3 w-3 rounded-full transition-all ${
-                    activeSlide === index ? 'bg-party-red scale-110' : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                  aria-label={`Chuyển đến mốc ${slide.year}`}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Tổng quan Việt Nam 1986 – 1996 */}
-      <section className="bg-gradient-to-b from-gray-50 via-white to-gray-50 py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12" data-aos="fade-up">
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.3em] text-party-red">
-              Việt Nam 1986 – 1996
-            </p>
-            <h2 className="mt-4 text-3xl md:text-4xl font-bold text-gray-900">
-              Mười năm đầu của công cuộc Đổi mới
-            </h2>
-            <p className="mt-3 text-gray-600 max-w-3xl mx-auto">
-              Từ một nền kinh tế khủng hoảng, bao cấp, Việt Nam dần chuyển sang kinh tế thị trường định hướng xã hội
-              chủ nghĩa, mở cửa hội nhập và từng bước cải thiện đời sống nhân dân.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white rounded-2xl shadow-md p-6 border border-gray-100" data-aos="fade-up">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Kinh tế</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Thực hiện khoán trong nông nghiệp, phát triển nhiều thành phần kinh tế, từng bước xóa bỏ cơ chế bao
-                cấp, kiểm soát lạm phát và bảo đảm lương thực cho cả nước.
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl shadow-md p-6 border border-gray-100" data-aos="fade-up" data-aos-delay="100">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Xã hội</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Đời sống nhân dân dần được cải thiện; giáo dục, y tế, văn hóa tiếp tục được quan tâm, từng bước khắc
-                phục những khó khăn sau chiến tranh và thời kỳ bao cấp.
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl shadow-md p-6 border border-gray-100" data-aos="fade-up" data-aos-delay="200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Đối ngoại & hội nhập</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Bình thường hóa quan hệ với nhiều nước, gia nhập ASEAN, mở rộng hợp tác quốc tế, phá thế bao vây cấm
-                vận và nâng cao vị thế Việt Nam trên trường quốc tế.
-              </p>
-            </div>
-          </div>
-
-          <div className="max-w-4xl mx-auto text-center text-sm md:text-base text-gray-500" data-aos="fade-up">
-            <p>
-              Các mốc thời gian trên chỉ là lát cắt tiêu biểu trong giai đoạn Đổi mới đầu tiên. Bạn có thể tiếp tục{" "}
-              <a href="/timeline" className="text-party-red font-semibold hover:underline">
-                khám phá Timeline chi tiết
-              </a>{" "}
-              hoặc vào{" "}
-              <a href="/congress-vi" className="text-party-red font-semibold hover:underline">
-                Chương 3 Phần 3
-              </a>{" "}
-              để tìm hiểu sâu hơn về đường lối Đổi mới.
-            </p>
           </div>
         </div>
       </section>
+
+      {/* Section 2: Dân chủ (Đại hội VII) */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Image Side (Order 2 on mobile, 1 on desktop) */}
+            <div className="relative order-2 lg:order-1" data-aos="fade-right">
+              <div className="absolute inset-0 bg-red-600 rounded-[3rem] -rotate-3 opacity-10"></div>
+              <img
+                src="https://tuyenquang.dcs.vn/Image/Large/20218278521_48282.jpg"
+                alt="Dân chủ XHCN"
+                className="relative rounded-[3rem] shadow-2xl w-full h-[500px] object-cover"
+              />
+              <div className="absolute -top-8 -right-8 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 max-w-xs z-10">
+                <p className="font-bold text-party-red text-lg text-center">DÂN LÀ GỐC</p>
+                <div className="h-1 w-12 bg-gray-200 mx-auto my-2"></div>
+                <p className="text-center text-sm text-gray-500">Tư tưởng xuyên suốt</p>
+              </div>
+            </div>
+
+            {/* Content Side */}
+            <div className="order-1 lg:order-2" data-aos="fade-left">
+
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Dân chủ & <br />
+                <span className="text-party-red">Dân chủ XHCN</span>
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed text-justify">
+                Nền dân chủ xã hội chủ nghĩa không chỉ là một chế độ chính trị, mà còn là giá trị văn hóa, xã hội. Đó là nền dân chủ <strong className="text-gray-900">của dân, do dân, vì dân</strong>, nơi quyền lực thực sự thuộc về nhân dân.
+              </p>
+
+              <div className="grid grid-cols-2 gap-6 mb-10">
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-50 hover:border-red-200 transition-colors text-center">
+                  <div className="w-12 h-12 mx-auto bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                  </div>
+                  <h4 className="font-bold text-gray-900 mb-2">Chính trị</h4>
+                  <p className="text-sm text-gray-500">Quyền lực thuộc về nhân dân</p>
+                </div>
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-50 hover:border-red-200 transition-colors text-center">
+                  <div className="w-12 h-12 mx-auto bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  </div>
+                  <h4 className="font-bold text-gray-900 mb-2">Kinh tế</h4>
+                  <p className="text-sm text-gray-500">Công hữu tư liệu sản xuất chủ yếu</p>
+                </div>
+              </div>
+
+              <a
+                href="/congress-vii"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-red-600 text-white rounded-full font-bold hover:bg-red-700 transition-all shadow-lg hover:shadow-red-200"
+              >
+                Tìm hiểu
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
     </>
   )
 }

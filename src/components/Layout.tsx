@@ -16,7 +16,7 @@ const Layout = ({ children }: LayoutProps) => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300)
     }
-    
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -35,11 +35,11 @@ const Layout = ({ children }: LayoutProps) => {
       style={
         hasCongressBg
           ? {
-              backgroundImage: 'url(/download.jpg)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-            }
+            backgroundImage: 'url(/download.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }
           : undefined
       }
     >
@@ -53,13 +53,12 @@ const Layout = ({ children }: LayoutProps) => {
               </div>
               <span className="text-2xl font-bold text-party-red">Đổi Mới Toàn Diện 1986-1996</span>
             </Link>
-            
+
             <div className="hidden md:flex items-center space-x-1">
               <NavLink to="/" label="Trang chủ" isActive={isActive('/')} />
               <NavLink to="/congress-vi" label="Chương III Phần III" isActive={isActive('/congress-vi')} />
               <NavLink to="/congress-vii" label="Chương IV Phần I" isActive={isActive('/congress-vii')} />
               <NavLink to="/midterm-congress-vii" label="Flip book" isActive={isActive('/midterm-congress-vii')} />
-              <NavLink to="/timeline" label="Timeline" isActive={isActive('/timeline')} />
               <NavLink to="/video" label="Video" isActive={isActive('/video')} />
               <NavLink to="/thong-tin" label="Thông tin" isActive={isActive('/thong-tin')} />
             </div>
@@ -96,31 +95,28 @@ const Layout = ({ children }: LayoutProps) => {
       <footer className="bg-gray-900 text-white py-12 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4 text-party-yellow">Về trang web</h3>
-              <p className="text-gray-400 leading-relaxed">
-                Trang web giới thiệu về lịch sử Đảng Cộng sản Việt Nam, giai đoạn Đổi mới toàn diện 1986-1996.
+            <div className="md:col-span-1 border-r border-gray-800 pr-4">
+              <h3 className="text-lg font-bold mb-4 text-party-yellow uppercase tracking-wider">Thông tin đồ án</h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                Website phục vụ môn học <strong>Chủ nghĩa xã hội khoa học (MLN131)</strong>.
               </p>
+
             </div>
-            <div>
-              <h3 className="text-xl font-bold mb-4 text-party-yellow">Thông tin</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>Lịch sử Đảng Cộng sản Việt Nam</li>
-                <li>Giai đoạn Đổi mới 1986-1996</li>
-                <li>Tài liệu tham khảo</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold mb-4 text-party-yellow">Liên hệ</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>Email: example@example.com</li>
-                <li>Điện thoại: +84 XXX XXX XXX</li>
-              </ul>
+            <div className="md:col-span-2 pl-0 md:pl-4">
+              <h3 className="text-lg font-bold mb-4 text-party-yellow uppercase tracking-wider">Cơ sở lý luận</h3>
+              <div className="text-gray-400 text-sm text-justify leading-relaxed opacity-90">
+                <p className="mb-2">
+                  <span className="font-semibold text-gray-300">Chủ nghĩa xã hội khoa học</span> là một trong ba bộ phận cấu thành của chủ nghĩa Mác - Lênin.
+                </p>
+                <p>
+                  Dựa trên phương pháp luận duy vật biện chứng và duy vật lịch sử, cùng các quy luật kinh tế, lý luận này giải thích khoa học về sự nảy sinh của cách mạng XHCN, sự hình thành và phát triển của hình thái kinh tế - xã hội cộng sản chủ nghĩa. Nó gắn liền với sứ mệnh lịch sử của giai cấp công nhân nhằm <span className="text-gray-300 italic">"giải phóng con người, giải phóng xã hội"</span>.
+                </p>
+              </div>
             </div>
           </div>
-          
+
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Lịch sử Đảng Cộng sản Việt Nam. Tất cả quyền được bảo lưu.</p>
+            <p>&copy; 2024 Chủ nghĩa xã hội khoa học . Tất cả quyền được bảo lưu.</p>
           </div>
         </div>
       </footer>
@@ -138,11 +134,10 @@ const NavLink = ({ to, label, isActive }: NavLinkProps) => {
   return (
     <Link
       to={to}
-      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-        isActive
-          ? 'bg-party-red/10 text-party-red border border-party-red/60'
-          : 'text-gray-700 hover:bg-gray-100'
-      }`}
+      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${isActive
+        ? 'bg-party-red/10 text-party-red border border-party-red/60'
+        : 'text-gray-700 hover:bg-gray-100'
+        }`}
     >
       {label}
     </Link>

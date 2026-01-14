@@ -39,7 +39,7 @@ const CongressVI = () => {
   return (
     <div className="relative min-h-screen text-gray-800 font-sans">
       <div className="absolute inset-0" style={backgroundStyle} aria-hidden />
-      <div className="absolute inset-0 bg-white/90 backdrop-blur-[2px]" aria-hidden />
+      <div className="absolute inset-0 bg-white/30 backdrop-blur-[2px]" aria-hidden />
 
       <div className="relative z-10">
         <div className="max-w-6xl mx-auto py-20 px-8">
@@ -47,8 +47,8 @@ const CongressVI = () => {
           {/* Header */}
           <header className="mb-20 text-center" data-aos="fade-down">
             <div className="flex items-center justify-center gap-4 mb-6">
-              <BookOpen className="w-12 h-12 text-red-700" />
-              <h1 className="text-3xl md:text-6xl font-extrabold text-red-700 uppercase tracking-tight">
+              <BookOpen className="w-12 h-12 text-blue-900" />
+              <h1 className="text-3xl md:text-6xl font-extrabold text-blue-900 uppercase tracking-tight">
                 III. Quá độ lên xã hội chủ nghĩa ở Việt Nam
               </h1>
             </div>
@@ -59,9 +59,9 @@ const CongressVI = () => {
 
           {/* Section 1: Thuan loi & Kho khan */}
           <section className="mb-24" data-aos="fade-up">
-            <div className="flex items-center gap-4 mb-8 border-b-4 border-red-200 pb-4">
-              <Scale className="w-10 h-10 text-red-800" />
-              <h3 className="text-3xl md:text-4xl font-bold text-red-800">
+            <div className="flex items-center gap-4 mb-8 border-b-4 border-blue-200 pb-4">
+              <Scale className="w-10 h-10 text-blue-800" />
+              <h3 className="text-3xl md:text-4xl font-bold text-blue-800">
                 Thuận lợi và khó khăn đan xen
               </h3>
             </div>
@@ -147,9 +147,9 @@ const CongressVI = () => {
 
           {/* Section: Tu tuong moi */}
           <section data-aos="fade-up" className="mb-24">
-            <div className="flex items-center gap-4 mb-8 border-b-4 border-red-200 pb-4">
-              <Lightbulb className="w-10 h-10 text-red-800" />
-              <h3 className="text-3xl md:text-4xl font-bold text-red-800">
+            <div className="flex items-center gap-4 mb-8 border-b-4 border-blue-200 pb-4">
+              <Lightbulb className="w-10 h-10 text-blue-800" />
+              <h3 className="text-3xl md:text-4xl font-bold text-blue-800">
                 Tư tưởng mới, nhận thức mới, tư duy mới
               </h3>
             </div>
@@ -209,12 +209,12 @@ const CongressVI = () => {
               <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                 2. Đặc trưng và Phương hướng xây dựng XHCN
               </h2>
-              <div className="w-32 h-2 bg-red-600 mx-auto rounded-full"></div>
+              <div className="w-32 h-2 bg-blue-600 mx-auto rounded-full"></div>
             </header>
 
             <div className="mb-16">
-              <h3 className="text-3xl font-bold text-red-800 mb-8 flex items-center gap-4">
-                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xl font-bold">
+              <h3 className="text-3xl font-bold text-blue-800 mb-8 flex items-center gap-4">
+                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl font-bold">
                   a
                 </span>
                 Đặc trưng bản chất của XHCN ở Việt Nam
@@ -289,8 +289,8 @@ const CongressVI = () => {
 
           {/* Subsection b */}
           <div className="mt-24 pt-12 border-t border-gray-200">
-            <h3 className="text-3xl font-bold text-red-800 mb-10 flex items-center gap-4">
-              <span className="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xl font-bold">
+            <h3 className="text-3xl font-bold text-blue-800 mb-10 flex items-center gap-4">
+              <span className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl font-bold">
                 b
               </span>
               Phương hướng xây dựng chủ nghĩa xã hội
@@ -335,24 +335,73 @@ const CongressVI = () => {
 
             {/* Goals */}
             <div className="mb-20">
-              <h4 className="text-3xl font-bold text-gray-900 mb-8 text-center uppercase tracking-wide flex items-center justify-center gap-3">
+              <h4 className="text-3xl font-bold text-gray-900 mb-10 text-center uppercase tracking-wide flex items-center justify-center gap-3" data-aos="fade-down">
                 <Target className="w-10 h-10 text-red-600" />
                 Mục tiêu phát triển đất nước (Đại hội XIII)
               </h4>
-              <div className="grid md:grid-cols-3 gap-6">
-                {[
-                  { year: 2025, event: "50 năm giải phóng MN", status: "Công nghiệp hướng hiện đại, vượt thu nhập TB thấp", color: "blue" },
-                  { year: 2030, event: "100 năm thành lập Đảng", status: "Công nghiệp hiện đại, thu nhập TB cao", color: "red" },
-                  { year: 2045, event: "100 năm thành lập nước", status: "Nước phát triển, thu nhập cao", color: "yellow" }
-                ].map((item) => (
-                  <div key={item.year} className={`bg-gradient-to-br from-${item.color}-50 to-${item.color}-100 p-8 rounded-3xl border border-${item.color}-200 text-center relative overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 shadow-sm hover:shadow-lg`}>
-                    <div className={`text-6xl font-black text-${item.color}-200 absolute -bottom-6 -right-6 opacity-40`}>{item.year}</div>
-                    <div className={`text-4xl font-extrabold text-${item.color}-800 mb-2`}>{item.year}</div>
-                    <p className={`text-lg text-${item.color}-900 font-semibold mb-4`}>{item.event}</p>
-                    <div className={`h-1 bg-${item.color}-300 w-16 mx-auto my-4 rounded-full`}></div>
-                    <p className="text-xl text-gray-700 leading-snug">{item.status}</p>
+              <div className="grid md:grid-cols-3 gap-8">
+                {/* 2025 Card */}
+                <div className="relative group" data-aos="fade-up" data-aos-delay="100">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-[2rem] transform rotate-1 opacity-20 group-hover:rotate-2 transition-transform duration-500"></div>
+                  <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-blue-100 relative overflow-hidden h-full transform hover:-translate-y-2 transition-transform duration-300">
+                    <div className="absolute top-0 right-0 p-4 opacity-5">
+                      <Target size={100} />
+                    </div>
+                    <div className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 font-bold text-sm mb-6">
+                      Giai đoạn 1
+                    </div>
+                    <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-cyan-500 mb-2">2025</div>
+                    <p className="text-blue-900 font-bold mb-4 flex items-center gap-2">
+                      50 năm giải phóng MN
+                    </p>
+                    <div className="w-full h-px bg-gray-200 my-4"></div>
+                    <p className="text-gray-700 leading-relaxed font-medium">
+                      Là nước đang phát triển, có công nghiệp theo hướng hiện đại, vượt qua mức thu nhập trung bình thấp.
+                    </p>
                   </div>
-                ))}
+                </div>
+
+                {/* 2030 Card */}
+                <div className="relative group" data-aos="fade-up" data-aos-delay="200">
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-orange-300 rounded-[2rem] transform -rotate-1 opacity-20 group-hover:-rotate-2 transition-transform duration-500"></div>
+                  <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-red-100 relative overflow-hidden h-full transform hover:-translate-y-2 transition-transform duration-300">
+                    <div className="absolute top-0 right-0 p-4 opacity-5">
+                      <Award size={100} />
+                    </div>
+                    <div className="inline-block px-4 py-1.5 rounded-full bg-red-100 text-red-700 font-bold text-sm mb-6">
+                      Giai đoạn 2
+                    </div>
+                    <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-red-600 to-orange-500 mb-2">2030</div>
+                    <p className="text-red-900 font-bold mb-4 flex items-center gap-2">
+                      100 năm thành lập Đảng
+                    </p>
+                    <div className="w-full h-px bg-gray-200 my-4"></div>
+                    <p className="text-gray-700 leading-relaxed font-medium">
+                      Là nước đang phát triển, có công nghiệp hiện đại, thu nhập trung bình cao.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 2045 Card */}
+                <div className="relative group" data-aos="fade-up" data-aos-delay="300">
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-amber-300 rounded-[2rem] transform rotate-1 opacity-30 group-hover:rotate-2 transition-transform duration-500"></div>
+                  <div className="bg-gradient-to-br from-white to-yellow-50 p-8 rounded-[2rem] shadow-xl border border-yellow-200 relative overflow-hidden h-full transform hover:-translate-y-2 transition-transform duration-300">
+                    <div className="absolute top-0 right-0 p-4 opacity-10">
+                      <Star size={100} className="text-yellow-500" />
+                    </div>
+                    <div className="inline-block px-4 py-1.5 rounded-full bg-yellow-100 text-yellow-800 font-bold text-sm mb-6 shadow-sm">
+                      Tầm nhìn
+                    </div>
+                    <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-yellow-600 to-amber-600 mb-2">2045</div>
+                    <p className="text-yellow-900 font-bold mb-4 flex items-center gap-2">
+                      100 năm thành lập Nước
+                    </p>
+                    <div className="w-full h-px bg-yellow-200 my-4"></div>
+                    <p className="text-gray-800 leading-relaxed font-bold">
+                      Trở thành nước phát triển, thu nhập cao.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
