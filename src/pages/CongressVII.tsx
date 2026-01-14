@@ -29,7 +29,7 @@ const CongressVII = () => {
   return (
     <div className="relative min-h-screen font-sans text-gray-800">
       <div className="absolute inset-0" style={backgroundStyle} aria-hidden />
-      <div className="absolute inset-0 bg-white/90 backdrop-blur-md" aria-hidden />
+      <div className="absolute inset-0 bg-white/85 backdrop-blur-sm" aria-hidden />
 
       <div className="relative z-10 max-w-7xl mx-auto py-20 px-6 sm:px-8 lg:px-10">
 
