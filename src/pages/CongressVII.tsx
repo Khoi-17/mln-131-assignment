@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { BookOpen, Star, Award, Landmark, History, Quote, ChevronRight, Lightbulb, TrendingUp } from 'lucide-react'
+import { Award, Landmark, History, Quote, Lightbulb, TrendingUp } from 'lucide-react'
 
 const CongressVII = () => {
   const [activeTab, setActiveTab] = useState<'part1' | 'part2'>('part1')
