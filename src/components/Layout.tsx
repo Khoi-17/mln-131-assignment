@@ -51,7 +51,7 @@ const Layout = ({ children }: LayoutProps) => {
               <div className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center shadow-md">
                 <span className="text-yellow-300 text-lg leading-none">★</span>
               </div>
-              <span className="text-2xl font-bold text-party-red">Đổi Mới Toàn Diện 1986-1996</span>
+              <span className="text-2xl font-bold text-party-red">Chủ nghĩa xã hội khoa học</span>
             </Link>
 
             <div className="hidden md:flex items-center space-x-1">
