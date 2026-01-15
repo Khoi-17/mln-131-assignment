@@ -59,7 +59,7 @@ const Layout = ({ children }: LayoutProps) => {
               <NavLink to="/congress-vi" label="Chương III Phần III" isActive={isActive('/congress-vi')} />
               <NavLink to="/congress-vii" label="Chương IV Phần I" isActive={isActive('/congress-vii')} />
               <NavLink to="/midterm-congress-vii" label="Flip book" isActive={isActive('/midterm-congress-vii')} />
-              <NavLink to="/video" label="Video" isActive={isActive('/video')} />
+              {/* <NavLink to="/video" label="Video" isActive={isActive('/video')} /> */}
               <NavLink to="/thong-tin" label="Thông tin" isActive={isActive('/thong-tin')} />
             </div>
 
