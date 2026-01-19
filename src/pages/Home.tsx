@@ -106,7 +106,7 @@ const Home = () => {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div data-aos="fade-right">
+            <div data-aos="fade-right" className="lg:pr-12">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Quá độ lên <br />
                 <span className="text-blue-700">Chủ nghĩa Xã hội</span>
@@ -145,12 +145,12 @@ const Home = () => {
               </a>
             </div>
 
-            <div className="relative" data-aos="fade-left">
+            <div className="relative h-[500px] w-[120%] -ml-[10%]" data-aos="fade-left">
               <div className="absolute inset-0 bg-blue-600 rounded-[3rem] rotate-3 opacity-10"></div>
               <img
-                src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NTTX/291024/thoi-ky-qua-do.jpg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTuGEv-JGBKN2dEtluExjbzAmbdJBFwwfgcA&s"
                 alt="Đại hội VI"
-                className="relative rounded-[3rem] shadow-2xl w-full h-[500px] object-cover"
+                className="relative rounded-[3rem] shadow-2xl w-full h-full object-contain bg-white"
               />
               <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 max-w-xs">
                 <p className="italic text-gray-600 font-serif">"Nhìn thẳng vào sự thật, đánh giá đúng sự thật, nói rõ sự thật"</p>
@@ -165,12 +165,12 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Image Side (Order 2 on mobile, 1 on desktop) */}
-            <div className="relative order-2 lg:order-1" data-aos="fade-right">
+            <div className="relative order-2 lg:order-1 h-[500px] w-[120%] -ml-[10%]" data-aos="fade-right">
               <div className="absolute inset-0 bg-red-600 rounded-[3rem] -rotate-3 opacity-10"></div>
               <img
                 src="https://tuyenquang.dcs.vn/Image/Large/20218278521_48282.jpg"
                 alt="Dân chủ XHCN"
-                className="relative rounded-[3rem] shadow-2xl w-full h-[500px] object-cover"
+                className="relative rounded-[3rem] shadow-2xl w-full h-full object-contain bg-white"
               />
               <div className="absolute -top-8 -right-8 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 max-w-xs z-10">
                 <p className="font-bold text-party-red text-lg text-center">DÂN LÀ GỐC</p>
@@ -180,7 +180,7 @@ const Home = () => {
             </div>
 
             {/* Content Side */}
-            <div className="order-1 lg:order-2" data-aos="fade-left">
+            <div className="order-1 lg:order-2 lg:pl-12" data-aos="fade-left">
 
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Dân chủ & <br />
